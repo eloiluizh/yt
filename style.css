@@ -1,15 +1,31 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Manrope', sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
 }
 
 #title {
-    font-family: "Manrope", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
+    text-align: center;
 }
 
-#video-list {
-    margin-top: 20px;
+#search {
+    width: 70%;
+    padding: 10px;
+}
+
+#search-btn {
+    padding: 10px 20px;
+}
+
+.video-item {
+    margin: 20px 0;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.video-title {
+    font-size: 18px;
+    margin: 10px 0;
 }

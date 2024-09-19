@@ -1,18 +1,17 @@
-async function fetchVideos() {
-    const apiKey = 'AIzaSyDxEJJAhX0Mb6X_pJceC2kSCxOmVv0Gi7w';
+async function fetchVideos(query) {
+    const apiKey = 'AIzaSyDxEJJAhX0Mb6X_pJceC2kSCxOmVv0Gi7w'; // Substitua pela sua chave de API
     const allowedChannels = ['Jazzghost', 'Souzones'];
-    const query = '';
+
+    // Faz a requisição para a API do YouTube
     const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${apiKey}`);
     const data = await response.json();
-    
+
     const videos = data.items.filter(item => allowedChannels.includes(item.snippet.channelTitle));
     
     const videoList = document.getElementById('video-list');
-    
-    function pesquisar() {
-        location.replace
-        query == document.getElementById("search")
-    }
+
+    // Limpa os resultados antigos
+    videoList.innerHTML = '';
 
     // Adiciona os vídeos filtrados à página
     videos.forEach(video => {
@@ -32,7 +31,7 @@ async function fetchVideos() {
         iframeElement.width = "560";
         iframeElement.height = "315";
         iframeElement.src = `https://www.youtube.com/embed/${video.id.videoId}`;
-        iframeElement.frameborder = "0";
+        iframeElement.frameBorder = "0";
         iframeElement.allowFullscreen = true;
         
         // Adiciona o título e o iframe dentro da div do vídeo
@@ -44,4 +43,10 @@ async function fetchVideos() {
     });
 }
 
-fetchVideos();
+// Adiciona o evento de clique ao botão de pesquisa
+document.getElementById('search-btn').addEventListener('click', () => {
+    const query = document.getElementById('search').value;  // Captura o valor da pesquisa
+    if (query) {
+        fetchVideos(query);  // Passa a query para a função que vai buscar os vídeos
+    }
+});
