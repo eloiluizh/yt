@@ -1,12 +1,22 @@
 async function fetchVideos(query) {
     const apiKey = 'AIzaSyDxEJJAhX0Mb6X_pJceC2kSCxOmVv0Gi7w'; // Substitua pela sua chave de API
-    const allowedChannels = ['Jazzghost', 'Souzones', 'LipaoGamer', 'Febatista', 'SkorpionOFICIAL', 'CoreDasAntigas'];
+    // Substitua pelos IDs dos canais permitidos
+    const allowedChannels = {
+        'UCIXguhHCl8eDTkXpEuiGPUA': 'Jazzghost',
+        'UCK3NkZPs0BurxabhtnSDa3g': 'Souzones',
+        'UCHuZmQ0lSW8TG81dVZZh5rw': 'LipaoGamer',
+        'UCs2AZhOnCTX0P4NtyNpuetQ': 'Febatista',
+        'UCHDV3JN5aqxAy9hwTTVHJow': 'SkorpionOFICIAL',
+        'UC-yA8YhrAgpFp4aVHRaNyMA': 'CoreDasAntigas'
+    };
 
     // Faz a requisição para a API do YouTube
     const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${apiKey}`);
     const data = await response.json();
 
-    const videos = data.items.filter(item => allowedChannels.includes(item.snippet.channelTitle));
+    const videos = data.items.filter(item => {
+        return allowedChannels.hasOwnProperty(item.snippet.channelId);
+    });
     
     const videoList = document.getElementById('video-list');
 
