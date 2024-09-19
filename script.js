@@ -1,6 +1,6 @@
 async function fetchVideos(query) {
     const apiKey = 'AIzaSyDxEJJAhX0Mb6X_pJceC2kSCxOmVv0Gi7w'; // Substitua pela sua chave de API
-    const allowedChannels = ['Jazzghost', 'Souzones'];
+    const allowedChannels = ['Jazzghost', 'Souzones', 'LipaoGamer', 'Febatista', 'SkorpionOFICIAL', 'CoreDasAntigas'];
 
     // Faz a requisição para a API do YouTube
     const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${apiKey}`);
