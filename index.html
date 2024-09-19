@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+    </style>
 </head>
 <body>
-    <h1 class="title">Início</h1>
-    <div id="video-list"></div>
+    <h1 id="title">Início</h1>
+    <div>
+    <input type="text" name="pesquisa" id="search" placeholder="Digite aqui para pesquisar">
+    <button id="search-btn" onclick="pesquisar()">Pesquisar</button>
+    </div>
+    <div id="video-list-container">
+        <div id="video-list"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -3,6 +3,13 @@ body {
     margin: 20px;
 }
 
+#title {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
 #video-list {
     margin-top: 20px;
 }
