@@ -1,11 +1,13 @@
 body {
-    font-family: 'Manrope', sans-serif;
-    background-color: #f4f4f4;
+    background-color: rgb(52,53,56);
     padding: 20px;
 }
 
 #title {
     text-align: center;
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #search {
@@ -19,7 +21,7 @@ body {
 
 .video-item {
     margin: 20px 0;
-    background: white;
+    background: rgb(42,43,46);
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
