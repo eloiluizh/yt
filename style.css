@@ -32,7 +32,7 @@ body {
     border: 2px solid white;
     border-radius: 10px 0 0 10px; /* Canto arredondado */
     color: white;
-    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    background: transparent; /* Fundo semi-transparente */
     padding: 0 1rem;
     font-size: 1.5rem; /* Ajuste do tamanho da fonte */
     outline: none;
