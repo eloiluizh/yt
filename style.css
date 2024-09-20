@@ -1,18 +1,43 @@
+/* CSS Original */
+body {
+    background-color: rgb(32, 33, 36);
+    padding: 20px;
+}
+
+#title { 
+    text-align: center;
+    font-family: "Pacifico", cursive;
+    font-weight: 800;
+    font-style: normal;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background-size: 1800% 1800%;
+    animation: rainbow 18s ease infinite;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
 /* CSS Customizado para a Pesquisa */
 #search-form {
     position: relative;
     width: 30rem; /* Ajuste a largura conforme necessário */
+    margin: 0 auto; /* Centraliza o formulário */
 }
 
 #search {
-    height: 5rem; /* Mantenha a altura consistente */
-    font-family: 'Lato', sans-serif; /* Usar a fonte desejada */
+    height: 5rem; /* Altura do input */
+    font-family: 'Lato', sans-serif; /* Fonte do input */
     border: 0; /* Remover bordas */
     color: #2f2f2f; /* Cor do texto */
     font-size: 1.8rem; /* Tamanho da fonte */
     outline: 0; /* Remover contorno */
     width: 100%; /* Largura total */
-    background: #fff; /* Cor de fundo */
+    background: #fff; /* Cor de fundo do input */
     padding: 0 1.6rem; /* Padding */
     border-radius: .7rem; /* Bordas arredondadas */
     appearance: none; /* Remover estilos padrões */
@@ -34,28 +59,10 @@
 #search:not(:placeholder-shown) {
     width: calc(100% - 6rem); /* Ajustar largura do input */
     border-radius: .7rem 0 0 .7rem; /* Bordas arredondadas */
-    + #search-btn {
-        display: block; /* Mostrar o botão */
-    }
 }
 
-/* Manter outros estilos do site */
-body {
-    background-color: rgb(32, 33, 36);
-    padding: 20px;
-}
-
-#title { 
-    text-align: center;
-    font-family: "Pacifico", cursive;
-    font-weight: 800;
-    font-style: normal;
-    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3);
-    background-size: 1800% 1800%;
-    -webkit-animation: rainbow 18s ease infinite;
-    animation: rainbow 18s ease infinite;
-    -webkit-background-clip: text;
-    color: transparent;
+#search:not(:placeholder-shown) + #search-btn {
+    display: block; /* Mostrar o botão */
 }
 
 /* Estilos de animação do título */
@@ -63,4 +70,17 @@ body {
     0% { background-position: 0% 82%; }
     50% { background-position: 100% 19%; }
     100% { background-position: 0% 82%; }
+}
+
+.video-item {
+    margin: 20px 0;
+    background: rgb(42, 43, 46);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.video-title {
+    font-size: 18px;
+    margin: 10px 0;
 }
