@@ -36,6 +36,7 @@ body {
     padding: 0 1rem;
     font-size: 1.5rem; /* Ajuste do tamanho da fonte */
     outline: none;
+    width: 70%
 }
 
 #search-btn {
