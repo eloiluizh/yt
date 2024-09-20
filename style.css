@@ -28,7 +28,7 @@ body {
 
 #search {
     flex: 1; /* Faz o input ocupar todo o espaço disponível */
-    height: 5rem;
+    height: 5rem; /* Ajuste da altura para uniformidade */
     border: 2px solid white;
     border-radius: 10px 0 0 10px; /* Apenas um canto arredondado */
     color: white;
@@ -43,7 +43,7 @@ body {
     border-radius: 0 10px 10px 0; /* Apenas o canto arredondado oposto */
     color: white;
     width: 12vw; /* Ajuste para responsividade */
-    height: 5rem;
+    height: 5rem; /* Agora igualando a altura do input */
     background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
     font-size: 1.5rem; /* Ajuste do tamanho da fonte */
     cursor: pointer;
