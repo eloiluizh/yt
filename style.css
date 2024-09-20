@@ -50,11 +50,12 @@ body {
     margin: 20px 0;
     background: rgb(42,43,46);
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .video-title {
+    color: white;
     font-size: 18px;
     margin: 10px 0;
 }
