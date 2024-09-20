@@ -25,20 +25,22 @@ body {
     color: transparent;
   }
 
-#search, #search-btn {
+#search {
     border: 2px solid white;
     border-radius: 10px;
     color: white;
     font: Arial 10pt inherit;
-}
-#search {
     outline: none;
     background: none;
     padding: 0;
-    width: 20vw;
+    width: 60vw;
 }
 #search-btn {
-    width: 4vw;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    font: Arial 10pt inherit;
+    width: 12vw;
     background: none;
     padding: 0;
     font: inherit;
