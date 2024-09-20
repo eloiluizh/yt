@@ -54,7 +54,8 @@ async function fetchVideos(query) {
 }
 
 // Adiciona o evento de clique ao botão de pesquisa
-document.getElementById('search-btn').addEventListener('click', () => {
+document.getElementById('search-btn').addEventListener('click', (event) => {
+    event.preventDefault(); // Previne o envio do formulário
     const query = document.getElementById('search').value;  // Captura o valor da pesquisa
     if (query) {
         fetchVideos(query);  // Passa a query para a função que vai buscar os vídeos
