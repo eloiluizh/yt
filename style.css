@@ -28,7 +28,6 @@ body {
 
 #search {
     flex: 1; /* Faz o input ocupar todo o espaço disponível */
-    height: 5rem; /* Altura uniforme */
     border: 2px solid white;
     border-radius: 10px 0 0 10px; /* Canto arredondado */
     color: white;
@@ -36,18 +35,13 @@ body {
     padding: 0 1rem;
     font-size: 1.5rem; /* Ajuste do tamanho da fonte */
     outline: none;
-    width: 70%
 }
 
 #search-btn {
     border: 2px solid white;
     border-radius: 0 10px 10px 0; /* Canto arredondado oposto */
     color: white;
-    width: 20%; /* Ajuste para que o botão seja proporcional */
-    height: 5rem; /* Igualando a altura do input */
-    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
     font-size: 1.5rem; /* Tamanho da fonte */
-    cursor: pointer;
 }
 
 .video-item {
