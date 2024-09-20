@@ -7,6 +7,7 @@ body {
 }
 
 #title {
+    font-size: 4.5rem;
     text-align: center;
     font-family: "Pacifico", cursive;
     font-weight: 800;
