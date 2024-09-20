@@ -55,7 +55,7 @@ body {
 }
 
 .video-title {
-    color: white;
+    font: Arial 10pt white;
     font-size: 18px;
     margin: 10px 0;
 }
