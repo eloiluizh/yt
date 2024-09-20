@@ -21,16 +21,16 @@ body {
 
 #search-form {
     position: relative;
-    width: 80vw; /* Para ser responsivo */
+    width: 90vw; /* Aumentar largura para mais espaço */
     max-width: 600px; /* Limite máximo para telas grandes */
     display: flex; /* Para alinhar input e botão */
 }
 
 #search {
     flex: 1; /* Faz o input ocupar todo o espaço disponível */
-    height: 5rem; /* Ajuste da altura para uniformidade */
+    height: 5rem; /* Altura uniforme */
     border: 2px solid white;
-    border-radius: 10px 0 0 10px; /* Apenas um canto arredondado */
+    border-radius: 10px 0 0 10px; /* Canto arredondado */
     color: white;
     background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
     padding: 0 1rem;
@@ -40,12 +40,12 @@ body {
 
 #search-btn {
     border: 2px solid white;
-    border-radius: 0 10px 10px 0; /* Apenas o canto arredondado oposto */
+    border-radius: 0 10px 10px 0; /* Canto arredondado oposto */
     color: white;
-    width: 12vw; /* Ajuste para responsividade */
-    height: 5rem; /* Agora igualando a altura do input */
+    width: 20%; /* Ajuste para que o botão seja proporcional */
+    height: 5rem; /* Igualando a altura do input */
     background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
-    font-size: 1.5rem; /* Ajuste do tamanho da fonte */
+    font-size: 1.5rem; /* Tamanho da fonte */
     cursor: pointer;
 }
 
