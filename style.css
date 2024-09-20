@@ -23,13 +23,14 @@ body {
     position: relative;
     width: 80vw; /* Para ser responsivo */
     max-width: 600px; /* Limite máximo para telas grandes */
+    display: flex; /* Para alinhar input e botão */
 }
 
 #search {
-    width: calc(100% - 12vw); /* Deixe espaço para o botão */
+    flex: 1; /* Faz o input ocupar todo o espaço disponível */
     height: 5rem;
     border: 2px solid white;
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px; /* Apenas um canto arredondado */
     color: white;
     background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
     padding: 0 1rem;
@@ -39,16 +40,13 @@ body {
 
 #search-btn {
     border: 2px solid white;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0; /* Apenas o canto arredondado oposto */
     color: white;
     width: 12vw; /* Ajuste para responsividade */
     height: 5rem;
     background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
     font-size: 1.5rem; /* Ajuste do tamanho da fonte */
     cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 0;
 }
 
 .video-item {
