@@ -1,44 +1,66 @@
-/* CSS customizado para a pesquisa */
+/* CSS Customizado para a Pesquisa */
 #search-form {
     position: relative;
-    width: 30rem;
-    background: var(--color-brand);
-    border-radius: var(--rad);
+    width: 30rem; /* Ajuste a largura conforme necessário */
 }
 
 #search {
-    height: var(--height);
-    font-family: var(--font-fam);
-    border: 0;
-    color: var(--color-dark);
-    font-size: 1.8rem;
-    outline: 0;
-    width: 100%;
-    background: var(--color-light);
-    padding: 0 1.6rem;
-    border-radius: var(--rad);
-    appearance: none;
-    transition: all var(--dur) var(--bez);
-    transition-property: width, border-radius;
-    z-index: 1;
-    position: relative;
+    height: 5rem; /* Mantenha a altura consistente */
+    font-family: 'Lato', sans-serif; /* Usar a fonte desejada */
+    border: 0; /* Remover bordas */
+    color: #2f2f2f; /* Cor do texto */
+    font-size: 1.8rem; /* Tamanho da fonte */
+    outline: 0; /* Remover contorno */
+    width: 100%; /* Largura total */
+    background: #fff; /* Cor de fundo */
+    padding: 0 1.6rem; /* Padding */
+    border-radius: .7rem; /* Bordas arredondadas */
+    appearance: none; /* Remover estilos padrões */
+    transition: all .3s cubic-bezier(0, 0, 0.43, 1.49); /* Transição suave */
 }
 
 #search-btn {
-    display: none;
+    display: none; /* Ocultar inicialmente */
     position: absolute;
     top: 0;
     right: 0;
-    width: var(--btn-width);
-    font-weight: bold;
-    background: var(--color-brand);
-    border-radius: 0 var(--rad) var(--rad) 0;
+    width: 6rem; /* Largura do botão */
+    font-weight: bold; /* Negrito */
+    background: #57bd84; /* Cor de fundo do botão */
+    border-radius: 0 .7rem .7rem 0; /* Bordas arredondadas */
 }
 
+/* Mostrar o botão quando o input não está vazio */
 #search:not(:placeholder-shown) {
-    border-radius: var(--rad) 0 0 var(--rad);
-    width: calc(100% - var(--btn-width));
+    width: calc(100% - 6rem); /* Ajustar largura do input */
+    border-radius: .7rem 0 0 .7rem; /* Bordas arredondadas */
     + #search-btn {
-        display: block;
+        display: block; /* Mostrar o botão */
     }
+}
+
+/* Manter outros estilos do site */
+body {
+    background-color: rgb(32, 33, 36);
+    padding: 20px;
+}
+
+#title { 
+    text-align: center;
+    font-family: "Pacifico", cursive;
+    font-weight: 800;
+    font-style: normal;
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3);
+    background-size: 1800% 1800%;
+    -webkit-animation: rainbow 18s ease infinite;
+    animation: rainbow 18s ease infinite;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Estilos de animação do título */
+@keyframes rainbow { 
+    0% { background-position: 0% 82%; }
+    50% { background-position: 100% 19%; }
+    100% { background-position: 0% 82%; }
 }
