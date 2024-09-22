@@ -3,7 +3,7 @@ let allowedChannels = {};
 // Função para buscar a whitelist do Firebase
 async function fetchWhitelist() {
     try {
-        const response = await fetch('https://console.firebase.google.com/u/0/project/fir-42a2e/database/fir-42a2e-default-rtdb/data/~2Fwhitelist?hl=pt'); // Substitua pela URL do seu Firebase
+        const response = await fetch('https://fir-42a2e-default-rtdb.firebaseio.com/whitelist.json'); // Substitua pela URL do seu Firebase
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
