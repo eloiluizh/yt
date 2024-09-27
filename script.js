@@ -1,81 +1,86 @@
-
+// Função de depuração
+function logDebug(message) {
+    const debugLog = document.getElementById('debug-log');
+    debugLog.textContent += message + '\n';
+}
 
 let allowedChannels = {};
 
 // Função para buscar a whitelist do Firebase
 async function fetchWhitelist() {
     try {
-        const response = await fetch('https://fir-42a2e-default-rtdb.firebaseio.com/whitelist'); // URL correta do Firebase
+        logDebug('Buscando whitelist...');
+        const response = await fetch('https://fir-42a2e-default-rtdb.firebaseio.com/whitelist.json');
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Erro na resposta da whitelist');
         }
         const data = await response.json();
-        
-        // Atualiza o allowedChannels com os canais obtidos do Firebase
         allowedChannels = {};
-        for (const key in data) { // Itera diretamente no objeto 'whitelist'
+        for (const key in data) {
             if (data.hasOwnProperty(key)) {
                 const channel = data[key];
-                allowedChannels[channel.id] = channel.name; // Atualiza allowedChannels
+                allowedChannels[channel.id] = channel.name;
             }
         }
-        console.log("Whitelist atualizada:", allowedChannels);
+        logDebug('Whitelist carregada com sucesso: ' + JSON.stringify(allowedChannels));
     } catch (error) {
-        console.error('Erro ao buscar a whitelist:', error);
+        logDebug('Erro ao buscar whitelist: ' + error.message);
     }
 }
 
 // Função para buscar vídeos com base em uma query
 async function fetchVideos(query) {
-    const apiKey = 'AIzaSyDxEJJAhX0Mb6X_pJceC2kSCxOmVv0Gi7w';
+    logDebug('Buscando vídeos para: ' + query);
+    const apiKey = 'AIzaSyDxEJJAhX0Mb6X_pJceC2kSCxOmVv0Gi7w'; // Substitua pela sua chave de API
+    try {
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${apiKey}`);
+        const data = await response.json();
+        const videos = data.items.filter(item => allowedChannels.hasOwnProperty(item.snippet.channelId));
 
-    // Faz a requisição para a API do YouTube
-    const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${apiKey}`);
-    const data = await response.json();
+        // Limpa o container de vídeos
+        const videoList = document.getElementById('video-list');
+        videoList.innerHTML = '';
 
-    // Filtra os vídeos com base na whitelist de allowedChannels
-    const videos = data.items.filter(item => allowedChannels.hasOwnProperty(item.snippet.channelId));
+        if (videos.length > 0) {
+            videos.forEach(video => {
+                const videoElement = document.createElement('div');
+                videoElement.classList.add('video-item');
 
-    // Seleciona o elemento HTML onde os vídeos serão exibidos
-    const videoList = document.getElementById('video-list');
+                const titleElement = document.createElement('h3');
+                titleElement.textContent = video.snippet.title;
 
-    // Limpa os resultados antigos
-    videoList.innerHTML = '';
+                const iframeElement = document.createElement('iframe');
+                iframeElement.width = "560";
+                iframeElement.height = "315";
+                iframeElement.src = `https://www.youtube.com/embed/${video.id.videoId}`;
+                iframeElement.frameBorder = "0";
+                iframeElement.allowFullscreen = true;
 
-    // Adiciona os vídeos filtrados à página
-    videos.forEach(video => {
-        const videoElement = document.createElement('div');
-        videoElement.classList.add('video-item'); // Classe CSS para estilização
-
-        const titleElement = document.createElement('h3');
-        titleElement.classList.add('video-title');
-        titleElement.textContent = video.snippet.title;
-
-        const iframeElement = document.createElement('iframe');
-        iframeElement.classList.add('video-iframe');
-        iframeElement.width = "560";
-        iframeElement.height = "315";
-        iframeElement.src = `https://www.youtube.com/embed/${video.id.videoId}`;
-        iframeElement.frameBorder = "0";
-        iframeElement.allowFullscreen = true;
-
-        // Adiciona o título e o vídeo à página
-        videoElement.appendChild(titleElement);
-        videoElement.appendChild(iframeElement);
-        videoList.appendChild(videoElement);
-    });
+                videoElement.appendChild(titleElement);
+                videoElement.appendChild(iframeElement);
+                videoList.appendChild(videoElement);
+            });
+            logDebug('Vídeos carregados com sucesso');
+        } else {
+            logDebug('Nenhum vídeo encontrado ou canal fora da whitelist.');
+        }
+    } catch (error) {
+        logDebug('Erro ao buscar vídeos: ' + error.message);
+    }
 }
 
-// Função para inicializar a whitelist ao carregar a página
+// Inicializar whitelist ao carregar a página
 window.onload = async () => {
-    await fetchWhitelist(); // Busca a whitelist antes de buscar os vídeos
+    await fetchWhitelist();
 };
 
-// Adiciona o evento de clique ao botão de pesquisa
+// Adicionar evento ao botão de pesquisa
 document.getElementById('search-btn').addEventListener('click', (event) => {
-    event.preventDefault(); // Previne o envio do formulário
-    const query = document.getElementById('search').value;  // Captura o valor da pesquisa
+    event.preventDefault();
+    const query = document.getElementById('search').value;
     if (query) {
-        fetchVideos(query);  // Faz a busca dos vídeos
+        fetchVideos(query);
+    } else {
+        logDebug('Por favor, insira uma pesquisa.');
     }
 });
