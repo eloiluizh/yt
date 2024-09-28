@@ -36,7 +36,7 @@ async function fetchVideos(query) {
     logDebug('Buscando vídeos para: ' + query);
     const apiKey = 'AIzaSyDxEJJAhX0Mb6X_pJceC2kSCxOmVv0Gi7w'; // Substitua pela sua chave de API
     try {
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${apiKey}`);
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=50&key=${apiKey}`);
         const data = await response.json();
         const videos = data.items.filter(item => allowedChannels.hasOwnProperty(item.snippet.channelId));
 
