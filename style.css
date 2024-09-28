@@ -57,14 +57,24 @@ body {
 }
 
 .video-item {
+    flex: 1 1 300px;
+    max-width: 300px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    flex: 1 1 300px; /* Itens flexíveis com largura mínima de 300px */
-    max-width: 300px; /* Largura máxima dos vídeos */
+    text-align: center; /* Para centralizar o conteúdo dentro do item */
+    overflow: hidden; /* Garante que nada saia da div */
+    position: relative; /* Necessário para o iframe responsivo */
+}
+
+.video-item iframe {
+    width: 100%; /* O iframe agora vai ocupar 100% da largura da div */
+    height: auto; /* Ajusta automaticamente a altura mantendo a proporção */
+    aspect-ratio: 16 / 9; /* Mantém a proporção 16:9 do vídeo */
+    border: none; /* Remove borda extra */
 }
 
 .video-title {
