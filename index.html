@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-    </style>
-    <script src="https://kit.fontawesome.com/339aa2b603.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1 id="title">yt</h1>
+    <h1 id="title">Youtube</h1>
+    
+    <!-- Formulário de Pesquisa -->
     <form id="search-form">
         <input type="text" id="search" placeholder="Pesquisar">
-        <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
+        <button id="search-btn">Pesquisar</button>
     </form>
+
+    <!-- Container para os vídeos -->
     <div id="video-list-container">
         <div id="video-list"></div>
     </div>
+
+    <!-- Log de Depuração -->
+    <div id="debug-container">
+        <h2>Log de Depuração</h2>
+        <pre id="debug-log"></pre>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
