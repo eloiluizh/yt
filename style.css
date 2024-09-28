@@ -65,9 +65,10 @@ body {
     padding: 10px;
     margin: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Para centralizar o conteúdo dentro do item */
-    overflow: hidden; /* Garante que nada saia da div */
-    position: relative; /* Necessário para o iframe responsivo */
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    height: auto; /* Ajusta a altura dinamicamente */
 }
 
 .video-item iframe {
@@ -80,6 +81,12 @@ body {
 .video-title {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    white-space: nowrap; /* Impede que o texto quebre linha */
+    overflow: hidden;    /* Oculta o texto que exceder a largura */
+    text-overflow: ellipsis; /* Adiciona reticências ao texto longo */
+    max-width: 100%; /* O título não excederá a largura da div */
 }
 
 /* Seção de debug */
