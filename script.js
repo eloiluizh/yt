@@ -2,6 +2,7 @@ let allowedChannels = {};
 let currentPage = 1;
 let itemsPerPage = 10;  // Defina quantos itens por página você deseja (pode ser alterado)
 let totalPages = 1;
+let allVideos = [];  // Armazena todos os vídeos retornados para uso nas páginas
 
 // Função de depuração
 function logDebug(message) {
@@ -38,27 +39,27 @@ async function fetchVideos(query) {
     try {
         const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=50&key=${apiKey}`);
         const data = await response.json();
-        const videos = data.items.filter(item => allowedChannels.hasOwnProperty(item.snippet.channelId));
+        allVideos = data.items.filter(item => allowedChannels.hasOwnProperty(item.snippet.channelId));
 
         // Atualiza o total de páginas
-        totalPages = Math.ceil(videos.length / itemsPerPage);
+        totalPages = Math.ceil(allVideos.length / itemsPerPage);
         currentPage = 1;
 
-        displayVideos(videos);
-        displayPagination(videos);
+        displayVideos();
+        displayPagination();
     } catch (error) {
         logDebug('Erro ao buscar vídeos: ' + error.message);
     }
 }
 
-// Função para exibir os vídeos de acordo com a página
-function displayVideos(videos) {
+// Função para exibir os vídeos da página atual
+function displayVideos() {
     const videoList = document.getElementById('video-list');
     videoList.innerHTML = '';
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const videosToShow = videos.slice(startIndex, endIndex);
+    const videosToShow = allVideos.slice(startIndex, endIndex);
 
     if (videosToShow.length > 0) {
         videosToShow.forEach(video => {
@@ -85,14 +86,13 @@ function displayVideos(videos) {
 }
 
 // Função para exibir a navegação de páginas
-function displayPagination(videos) {
+function displayPagination() {
     const paginationContainer = document.getElementById('pagination-container');
     paginationContainer.innerHTML = '';
 
     const pagination = document.createElement('div');
     pagination.classList.add('pagination');
 
-    // Limita a 5 páginas exibidas de cada vez
     const maxPagesToShow = 5;
     const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
     const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
@@ -101,9 +101,10 @@ function displayPagination(videos) {
         const pageLink = document.createElement('a');
         pageLink.textContent = i;
         pageLink.href = "#";
-        pageLink.onclick = function () {
+        pageLink.onclick = function (event) {
+            event.preventDefault();  // Evita recarregar a página
             currentPage = i;
-            displayVideos(videos);
+            displayVideos();  // Renderiza apenas os vídeos da página selecionada
         };
         if (i === currentPage) {
             pageLink.style.fontWeight = 'bold';  // Destaque para a página atual
