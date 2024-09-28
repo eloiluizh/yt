@@ -1,71 +1,72 @@
+/* Estilos globais */
 body {
-    background-color: rgb(32,33,36);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 #title {
-    font-size: 4.5rem;
-    text-align: center;
-    font-family: "Pacifico", cursive;
-    font-weight: 800;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3);
-    background-size: 1800% 1800%;
-    animation: rainbow 18s ease infinite;
-    background-clip: text;
-    color: transparent;
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    margin: 20px 0;
 }
 
 #search-form {
-    position: relative;
-    width: 90vw; /* Aumentar largura para mais espaço */
-    max-width: 600px; /* Limite máximo para telas grandes */
-    display: flex; /* Para alinhar input e botão */
+    margin: 20px;
 }
 
 #search {
-    flex: 1; /* Faz o input ocupar todo o espaço disponível */
-    border: 2px solid white;
-    border-radius: 10px 0 0 10px; /* Canto arredondado */
-    color: white;
-    background: transparent; /* Fundo semi-transparente */
-    padding: 0 1rem;
-    font-size: 1.5rem; /* Ajuste do tamanho da fonte */
-    outline: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 300px;
 }
 
 #search-btn {
-    border: 2px solid white;
-    border-left: none;
-    border-radius: 0 10px 10px 0; /* Canto arredondado oposto */
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #007BFF;
     color: white;
-    font-size: 1.5rem; /* Tamanho da fonte */
+    cursor: pointer;
+}
+
+#search-btn:hover {
+    background-color: #0056b3;
+}
+
+#video-list-container {
+    margin: 20px auto;
+    width: 80%;
 }
 
 .video-item {
-    margin: 20px 0;
-    width: 42vw;
-    background: rgb(42,43,46);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     padding: 10px;
-    border-radius: 15px;
+    margin: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .video-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font: Arial;
-    font-size: 18px;
-    font-weight: 450;
-    color: rgb(212,213,216);
-    margin: 10px 0;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
-@keyframes rainbow {
-    0% { background-position: 0% 82%; }
-    50% { background-position: 100% 19%; }
-    100% { background-position: 0% 82%; }
+#debug-container {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+}
+
+#debug-log {
+    white-space: pre-wrap;
+    text-align: left;
 }
