@@ -1,10 +1,13 @@
+let allowedChannels = {};
+let currentPage = 1;
+let itemsPerPage = 10;  // Defina quantos itens por página você deseja (pode ser alterado)
+let totalPages = 1;
+
 // Função de depuração
 function logDebug(message) {
     const debugLog = document.getElementById('debug-log');
     debugLog.textContent += message + '\n';
 }
-
-let allowedChannels = {};
 
 // Função para buscar a whitelist do Firebase
 async function fetchWhitelist() {
@@ -37,36 +40,78 @@ async function fetchVideos(query) {
         const data = await response.json();
         const videos = data.items.filter(item => allowedChannels.hasOwnProperty(item.snippet.channelId));
 
-        // Limpa o container de vídeos
-        const videoList = document.getElementById('video-list');
-        videoList.innerHTML = '';
+        // Atualiza o total de páginas
+        totalPages = Math.ceil(videos.length / itemsPerPage);
+        currentPage = 1;
 
-        if (videos.length > 0) {
-            videos.forEach(video => {
-                const videoElement = document.createElement('div');
-                videoElement.classList.add('video-item');
-
-                const titleElement = document.createElement('h3');
-                titleElement.textContent = video.snippet.title;
-
-                const iframeElement = document.createElement('iframe');
-                iframeElement.width = "560";
-                iframeElement.height = "315";
-                iframeElement.src = `https://www.youtube.com/embed/${video.id.videoId}`;
-                iframeElement.frameBorder = "0";
-                iframeElement.allowFullscreen = true;
-
-                videoElement.appendChild(titleElement);
-                videoElement.appendChild(iframeElement);
-                videoList.appendChild(videoElement);
-            });
-            logDebug('Vídeos carregados com sucesso');
-        } else {
-            logDebug('Nenhum vídeo encontrado ou canal fora da whitelist.');
-        }
+        displayVideos(videos);
+        displayPagination(videos);
     } catch (error) {
         logDebug('Erro ao buscar vídeos: ' + error.message);
     }
+}
+
+// Função para exibir os vídeos de acordo com a página
+function displayVideos(videos) {
+    const videoList = document.getElementById('video-list');
+    videoList.innerHTML = '';
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const videosToShow = videos.slice(startIndex, endIndex);
+
+    if (videosToShow.length > 0) {
+        videosToShow.forEach(video => {
+            const videoElement = document.createElement('div');
+            videoElement.classList.add('video-item');
+
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = video.snippet.title;
+
+            const iframeElement = document.createElement('iframe');
+            iframeElement.width = "560";
+            iframeElement.height = "315";
+            iframeElement.src = `https://www.youtube.com/embed/${video.id.videoId}`;
+            iframeElement.frameBorder = "0";
+            iframeElement.allowFullscreen = true;
+
+            videoElement.appendChild(titleElement);
+            videoElement.appendChild(iframeElement);
+            videoList.appendChild(videoElement);
+        });
+    } else {
+        logDebug('Nenhum vídeo encontrado ou canal fora da whitelist.');
+    }
+}
+
+// Função para exibir a navegação de páginas
+function displayPagination(videos) {
+    const paginationContainer = document.getElementById('pagination-container');
+    paginationContainer.innerHTML = '';
+
+    const pagination = document.createElement('div');
+    pagination.classList.add('pagination');
+
+    // Limita a 5 páginas exibidas de cada vez
+    const maxPagesToShow = 5;
+    const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+    const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+    for (let i = startPage; i <= endPage; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.textContent = i;
+        pageLink.href = "#";
+        pageLink.onclick = function () {
+            currentPage = i;
+            displayVideos(videos);
+        };
+        if (i === currentPage) {
+            pageLink.style.fontWeight = 'bold';  // Destaque para a página atual
+        }
+        pagination.appendChild(pageLink);
+    }
+
+    paginationContainer.appendChild(pagination);
 }
 
 // Inicializar whitelist ao carregar a página

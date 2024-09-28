@@ -15,6 +15,26 @@ body {
     margin: 20px 0;
 }
 
+#pagination-container {
+    margin: 20px 0;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
 /* Formulário de busca */
 #search-form {
     margin: 20px;
@@ -79,9 +99,7 @@ body {
 }
 
 .video-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 10px;
     white-space: nowrap; /* Impede que o texto quebre linha */
     overflow: hidden;    /* Oculta o texto que exceder a largura */
