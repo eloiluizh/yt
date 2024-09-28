@@ -10,7 +10,6 @@ body {
 
 /* Título */
 #title {
-    font-family: 'Pacifico', cursive;
     font-size: 3rem;
     margin: 20px 0;
 }
@@ -118,6 +117,9 @@ body {
 #debug-log {
     white-space: pre-wrap;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 /* Media query para telas menores que 768px */
