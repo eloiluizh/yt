@@ -49,6 +49,13 @@ body {
     width: 90%;
 }
 
+#video-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha quando necessário */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 10px; /* Espaço entre os vídeos */
+}
+
 .video-item {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -56,6 +63,8 @@ body {
     padding: 10px;
     margin: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px; /* Itens flexíveis com largura mínima de 300px */
+    max-width: 300px; /* Largura máxima dos vídeos */
 }
 
 .video-title {
@@ -86,8 +95,8 @@ body {
         width: 100%;
     }
 
-    #video-list-container {
-        width: 100%;
+    #video-list {
+        flex-direction: column; /* Empilha os vídeos em telas menores */
     }
 
     .video-title {
