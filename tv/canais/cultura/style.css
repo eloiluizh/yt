@@ -7,3 +7,12 @@
     color: #27BA59;
     text-align: center;
 }
+.voltar {
+    font-size: 5px;
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #1d8d42;
+    text-align: center; 
+}
