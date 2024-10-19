@@ -1,2 +1,2 @@
-var player = videojs('cultura-player');
+var player = videojs('vid1');
 player.play();
