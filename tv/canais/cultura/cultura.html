@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TV Cultura</title>
-    <script src="script.js"></script>
-    <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="//releases.flowplayer.org/7.0.4/commercial/flowplayer.min.js"></script>
-    <script src="//releases.flowplayer.org/hlsjs/flowplayer.hlsjs.min.js"></script>
-    <link rel="stylesheet" href="//releases.flowplayer.org/7.0.4/commercial/skin/skin.css">
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&display=swap');
@@ -16,18 +11,7 @@
 </head>
 <body>
     <h1 class="title">Tv Cultura</h1>
-    <div class="flowplayer fixed-controls no-toggle no-time play-button obj"
-      style="    width: 85.5%;
-    height: 80%;
-    margin-left: 7.2%;
-    margin-top: 6%;
-    z-index: 1000;" data-key="$812975748999788" data-live="true" data-share="false" data-ratio="0.5625"  data-logo="">
-    
-    <a href="../../tv.html" class="voltar">Voltar</a>
-    
-      <video autoplay="true" stretch="true">
-         <source type="application/x-mpegurl" src="https://player-tvcultura.stream.uol.com.br/live/tvcultura.m3u8">
-      </video>
+    <iframe src=https://www.hlsplayer.net/embed?type=m3u8&src=https://player-tvcultura.stream.uol.com.br/live/tvcultura.m3u8 />
     </div>
 </body>
 </html>
